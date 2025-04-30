@@ -2,35 +2,37 @@ import React, { useEffect, useState } from "react";
 import FormQuestion from "./components/FormQuestion";
 import FormAnswer from "./components/FormAnswer";
 
-
-
 const TriviaApp = () => {
-
   const quiz = [
     {
       id: 1,
       question: "Siapa nama nabi ke 25?",
       answer: "Muhammad",
+      isCorrect: false,
     },
     {
       id: 2,
       question: "Dimana ibukota jepang?",
       answer: "Tokyo",
+      isCorrect: false,
     },
     {
       id: 3,
       question: "Batch kita berapa?",
       answer: "326",
+      isCorrect: false,
     },
     {
       id: 4,
       question: "Siapa nama panggilan direktur IT BNI?",
       answer: "Pak Toto",
+      isCorrect: false,
     },
     {
       id: 5,
       question: "Jam berapa istirahat makan siang (dalam angka)?",
       answer: "12",
+      isCorrect: false,
     },
   ];
 
@@ -41,12 +43,25 @@ const TriviaApp = () => {
 
   useEffect(() => {
     setQuestion(quiz[number]);
-  });
+    setNumber(1);
+  }, []);
 
   function handleChangeQuestion() {
     console.log("Number ", number);
+    setQuestion({
+      ...question,
+      isCorrect: question.answer == answer ? true : false,
+    });
     if (number >= quiz.length) {
-      alert("Quiz Selesai");
+      let i = 0;
+      quiz.map((e) => {
+        if (e.isCorrect) {
+          i += 20;
+        }
+        return i;
+      });
+      alert("Quiz Selesai, kamu benar ", i);
+
       return;
     }
     setNumber(number + 1);
