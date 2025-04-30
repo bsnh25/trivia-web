@@ -45,7 +45,7 @@ const TriviaApp = () => {
 
   function handleChangeQuestion() {
     console.log("Number ", number);
-    if (number >= quiz.length) {
+    if (number > (quiz.length-2)) {
       alert("Quiz Selesai");
       return;
     }
