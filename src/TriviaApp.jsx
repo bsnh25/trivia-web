@@ -48,15 +48,19 @@ const TriviaApp = () => {
 
   function handleChangeQuestion() {
     console.log("Number ", number);
-    setQuestion({
-      ...question,
-      isCorrect: question.answer == answer ? true : false,
-    });
+    if (question.answer == answer) {
+      setQuestion({
+        ...question,
+        isCorrect: true,
+      });
+    }
+
     if (number >= quiz.length) {
       let i = 0;
       quiz.map((e) => {
         if (e.isCorrect) {
           i += 20;
+          console.log(i);
         }
         return i;
       });
