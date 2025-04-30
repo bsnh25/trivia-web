@@ -46,6 +46,7 @@ const TriviaApp = () => {
     }
     setNumber(number + 1);
     setQuestion(quiz[number - 1]);
+    setAnswer("");
     console.log(question);
   }
 
