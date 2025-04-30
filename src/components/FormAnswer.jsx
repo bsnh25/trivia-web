@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormAnswer = ({ setAnswer, value, submit, changeQuestion }) => {
+const FormAnswer = ({ setAnswer, value, changeQuestion }) => {
   return (
     <>
     {/* // <form className="w-full max-w-sm" onSubmit={submit}> */}

@@ -34,9 +34,14 @@ const TriviaApp = () => {
     },
   ];
 
-  const [question, setQuestion] = useState(quiz[0]);
-  const [number, setNumber] = useState(1);
+  const [number, setNumber] = useState(0);
+  const [question, setQuestion] = useState(quiz[number]);
   const [answer, setAnswer] = useState("");
+  const [answerCollection, setAnswerCollection] = useState([]);
+
+  useEffect(() => {
+    setQuestion(quiz[number]);
+  });
 
   function handleChangeQuestion() {
     console.log("Number ", number);
@@ -45,7 +50,7 @@ const TriviaApp = () => {
       return;
     }
     setNumber(number + 1);
-    setQuestion(quiz[number - 1]);
+    setQuestion(quiz[number]);
     setAnswer("");
     console.log(question);
   }
@@ -56,7 +61,6 @@ const TriviaApp = () => {
       <FormAnswer
         value={answer}
         setAnswer={setAnswer}
-        onChange={(e) => setAnswer(e.target.value)}
         changeQuestion={handleChangeQuestion}
       />
     </div>
